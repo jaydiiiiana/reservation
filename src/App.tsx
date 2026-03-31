@@ -7,7 +7,7 @@ import Villas from './components/Villas';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
-import MaintenanceGuard from './components/MaintenanceGuard';
+import { MaintenanceGuard } from './components/MaintenanceGuard';
 
 const App: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,8 +24,9 @@ const App: React.FC = () => {
     };
 
     return (
-        <MaintenanceGuard>
+        <MaintenanceGuard systemId="ext-6">
             <div className="min-h-screen bg-white">
+
                 <Navbar onBookNow={() => document.getElementById('cottages')?.scrollIntoView({ behavior: 'smooth' })} />
                 <Hero onExplore={() => document.getElementById('cottages')?.scrollIntoView({ behavior: 'smooth' })} />
                 <About />

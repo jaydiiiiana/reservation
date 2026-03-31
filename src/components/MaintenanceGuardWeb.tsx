@@ -6,9 +6,13 @@ const supabase = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjZ3N6ZXh1d2d4cXd3Zm5teXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5Mzk1NjIsImV4cCI6MjA5MDUxNTU2Mn0.iCAE1riSUS6Rw3i8-tjVtUi3MCJSiz1nt_jLr3b-cvw'
 );
 
-// Resort Reservation = 'ext-6'
-// Tech Support = 'ext-2'
-// E-Booking = 'ext-1'
+/**
+ * MaintenanceGuard Template (Web Version)
+ * 
+ * 1. Copy this file into your project at src/components/MaintenanceGuard.tsx
+ * 2. In your App.tsx, wrap your app:
+ *    <MaintenanceGuard systemId="ext-x">...</MaintenanceGuard>
+ */
 
 export function MaintenanceGuard({ children, systemId }: { children: any, systemId: string }) {
   const [isLocked, setIsLocked] = useState(false);
@@ -43,7 +47,6 @@ export function MaintenanceGuard({ children, systemId }: { children: any, system
 
     return () => { supabase.removeChannel(channel); };
   }, [systemId]);
-
 
   if (loading) return null;
 
@@ -83,7 +86,7 @@ export function MaintenanceGuard({ children, systemId }: { children: any, system
             </h1>
 
             <p className="text-lg text-white/70 leading-relaxed font-outfit max-w-md mx-auto mb-12 border-t border-white/5 pt-8">
-              Azure Mindoro is currently undergoing scheduled refinement. We provide a bridge between modern comfort and raw nature — please yield as we polish the experience.
+              This system is currently undergoing scheduled refinement. We provide a bridge between modern comfort and raw nature — please yield as we polish the experience.
             </p>
 
             <div className="flex items-center gap-3">
