@@ -82,10 +82,15 @@ section {
     box-shadow: 0 30px 60px -12px rgba(10, 45, 33, 0.15);
   }
 
+  .shadow-premium-gold {
+    box-shadow: 0 40px 100px -20px rgba(201, 166, 107, 0.2);
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 }
+
 
 @layer components {
   .fade-in {
