@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@source "../index.html";
+@source "./**/*.{js,ts,jsx,tsx}";
+
+@theme {
+  /* Nature-Inspired Luxury Palette */
+  --color-primary: #0a2d21;      /* Deep Forest Emerald */
+  --color-secondary: #c9a66b;    /* Golden Mist Sands */
+  --color-accent: #144234;       /* Deep Moss Sage */
+  --color-mist: #f8faf9;         /* High Mountain Mist */
+  
+  /* Typography */
+  --font-outfit: 'Outfit', sans-serif;
+  --font-lora: 'Lora', serif;    /* Sophisticated serif for headlines & accents */
+
+  /* Custom Transitions */
+  --transition-premium: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+:root {
+  --bg-soft: #fcfdfc;
+  --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-outfit);
+  scroll-behavior: smooth;
+}
+
+svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+body {
+  background-color: white;
+  color: #1a2d23;
+  overflow-x: hidden;
+  line-height: 1.625;
+}
+
+section {
+  position: relative;
+  overflow: visible; /* Changed from hidden to ensure badges can float slightly out of bounds but within the section stack */
+  scroll-margin-top: 100px;
+  z-index: 10;
+}
+
+/* Background Texture for Premium Feel */
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+  z-index: 1;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .shadow-premium {
+    box-shadow: 0 30px 60px -12px rgba(10, 45, 33, 0.15);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn {
+    padding: 1.125rem 2.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition-premium);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid transparent;
+    text-align: center;
+    position: relative; /* Default to relative for safe z-indexing */
+  }
+
+  .btn-primary {
+    background-color: #0a2d21 !important; /* Force background as it was failing in visual audit */
+    color: white !important;
+    border: 1px solid #0a2d21;
+  }
+
+  .btn-primary:hover {
+    background-color: transparent !important;
+    color: #0a2d21 !important;
+    transform: translateY(-4px);
+  }
+
+  .btn-gold {
+    background-color: #c9a66b !important;
+    color: white !important;
+    box-shadow: 0 10px 20px rgba(201, 166, 107, 0.3);
+  }
+
+  .btn-gold:hover {
+    background-color: #b38f5a !important;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(201, 166, 107, 0.5);
+  }
+
+  .btn-outline {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-outline:hover {
+    background-color: white !important;
+    color: #0a2d21 !important;
+    border-color: white !important;
+    transform: translateY(-3px);
+  }
+}
